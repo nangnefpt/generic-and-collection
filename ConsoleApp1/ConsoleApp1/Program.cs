@@ -28,3 +28,33 @@ class Program
 
     }
 }
+
+interface IBasic<T> where T : struct
+{// vi du generic interface
+    T Add(T a, T b);
+}
+
+
+class MyFirstClass : IBasic<int>
+{
+    public int Add(int a, int b) => a + b;
+}
+
+class MySecondClass : IBasic<double>
+{
+    public double Add(double a, double b) => a + b;
+
+}
+class Program1
+{
+    static void Main(string[] args)
+    {
+        MyFirstClass firstClass = new MyFirstClass() ;
+        dynamic r = firstClass.Add(1, 2) ;
+        Console.WriteLine(r);
+        MySecondClass secondClass= new MySecondClass() ;
+        r = secondClass.Add(1.5, 2.5);
+        Console.WriteLine(r);
+        Console.ReadLine();
+    }
+}
